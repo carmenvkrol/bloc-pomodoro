@@ -3,7 +3,7 @@
   <p>DASHBOARD</p>
 
   <h3><timer autostart="false" interval="1000" countdown="937500">{{minutes}} : {{seconds | numberFixedLen:2}} </timer></h3>
-  <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
-  <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button>
+  <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start Timer</button>
+  <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop Timer</button>
 
 </section>
