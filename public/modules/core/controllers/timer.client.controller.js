@@ -1,5 +1,3 @@
-/*global $:false */
-
 'use strict';
 
 
@@ -28,11 +26,3 @@ angular
     }
 
   ]);
-
-angular
-  .module('core')
-  .filter('numberFixedLen', function () {
-    return function(a,b){
-        return(1e4+a+'').slice(-b);
-    };
-  });
