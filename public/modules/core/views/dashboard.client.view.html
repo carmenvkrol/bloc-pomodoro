@@ -1,29 +1,39 @@
-<section data-ng-controller="DashboardController">
+<section>
 
   <p>DASHBOARD</p>
 
-  <h2>Pomodoro</h2>
-  <h3>
-    <timer autostart="false" interval="1000" countdown="937500">
-      {{minutes}} : {{seconds | numberFixedLen:2}} 
-    </timer>
-  </h3>
-  
-  <h2>Short Break</h2>
-  <h3>
-    <timer autostart="false" interval="1000" countdown="7500">
-      {{minutes}} : {{seconds | numberFixedLen:2}}
-    </timer>
-  </h3>
+  <div data-ng-controller="TimerController">
+    <h2>Pomodoro</h2>
+    <h3>
+      <timer autostart="false" interval="1000" countdown="937500">
+        {{minutes}} : {{seconds | numberFixedLen:2}} 
+      </timer>
+      <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start Timer</button>
+      <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop Timer</button>
+    </h3>
+  </div>
 
-  <h2>Long Break</h2>
-  <h3>
-    <timer autostart="false" interval="1000" countdown="112500">
-      {{minutes}} : {{seconds | numberFixedLen:2}}
-    </timer>
-  </h3>
+  <div data-ng-controller="TimerController">
+    <h2>Short Break</h2>
+    <h3>
+      <timer autostart="false" interval="1000" countdown="7500">
+        {{minutes}} : {{seconds | numberFixedLen:2}}
+      </timer>
+      <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start Timer</button>
+      <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop Timer</button>
+    </h3>
+  </div>
 
-  <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start Timer</button>
-  <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop Timer</button>
+  <div data-ng-controller="TimerController">
+    <h2>Long Break</h2>
+    <h3>
+      <timer autostart="false" interval="1000" countdown="112500">
+        {{minutes}} : {{seconds | numberFixedLen:2}}
+      </timer>
+      <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start Timer</button>
+      <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop Timer</button>
+    </h3>
+  </div>
+
 
 </section>

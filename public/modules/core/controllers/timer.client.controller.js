@@ -1,13 +1,15 @@
+/*global $:false */
+
 'use strict';
 
 
 angular
   .module('core')
-  .controller('DashboardController', ['$scope',
+  .controller('TimerController', ['$scope',
 
     function($scope) {
 
-      $scope.timerRunning = true;
+      $scope.timerRunning = false;
  
       $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
