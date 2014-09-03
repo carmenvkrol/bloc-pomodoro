@@ -3,12 +3,14 @@
 
 angular
   .module('core')
-  .controller('TimerController', ['$scope',
+  .controller('TimerController', ['$scope', '$timeout',
 
-    function($scope) {
+    function($scope, $timeout) {
 
       $scope.timerRunning = false;
- 
+
+      $scope.countdownPomodoro = 937500;
+
       $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
         $scope.timerRunning = true;
@@ -18,10 +20,11 @@ angular
         $scope.$broadcast('timer-stop');
         $scope.timerRunning = false;
       };
- 
-      $scope.$on('timer-stopped', function (event, data){
-        console.log('Timer Stopped - data = ', data);
-      });
+
+      $scope.resetTimer = function (){
+        $scope.countdownPomodoro = 937500;
+        $scope.$broadcast('timer-set-countdown', $scope.countdownPomodoro);
+      };
 
     }
 
