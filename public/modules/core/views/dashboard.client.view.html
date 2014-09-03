@@ -15,29 +15,31 @@
         </timer>
         <button ng-click="startTimer()">Start</button>
         <button ng-click="stopTimer()">Stop</button>
-        <button ng-click="resetTimer()">Reset</button>
+        <button ng-click="resetTimer('pomodoro')">Reset</button>
       </h3>
     </div>
 
     <div data-ng-controller="TimerController" ng-show="shortBreakRunning" ng-hide="pomodoroRunning || longBreakRunning">
       <h2>Short Break</h2>
       <h3>
-        <timer autostart="false" interval="1000" countdown="7500">
+        <timer autostart="false" interval="1000" countdown="countdownShortBreak">
           {{mminutes}} : {{sseconds}}
         </timer>
-        <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start</button>
-        <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop</button>
+        <button ng-click="startTimer()">Start</button>
+        <button ng-click="stopTimer()">Stop</button>
+        <button ng-click="resetTimer('shortBreak')">Reset</button>
       </h3>
     </div>
 
     <div data-ng-controller="TimerController" ng-show="longBreakRunning" ng-hide="pomodoroRunning || shortBreakRunning">
       <h2>Long Break</h2>
       <h3>
-        <timer autostart="false" interval="1000" countdown="112500">
+        <timer autostart="false" interval="1000" countdown="countdownLongBreak">
           {{mminutes}} : {{sseconds}}
         </timer>
-        <button ng-click="startTimer()" ng-disabled="timerRunning" ng-show="!timerRunning">Start</button>
-        <button ng-click="stopTimer()" ng-disabled="!timerRunning" ng-show="timerRunning">Stop</button>
+        <button ng-click="startTimer()">Start</button>
+        <button ng-click="stopTimer()">Stop</button>
+        <button ng-click="resetTimer('longBreak')">Reset</button>
       </h3>
     </div>
 
