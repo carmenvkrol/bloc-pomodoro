@@ -22,6 +22,7 @@ angular
       };
 
       $scope.resetTimer = function (){
+        $scope.startTimer();
         $scope.countdownPomodoro = 937500;
         $scope.$broadcast('timer-set-countdown', $scope.countdownPomodoro);
       };
