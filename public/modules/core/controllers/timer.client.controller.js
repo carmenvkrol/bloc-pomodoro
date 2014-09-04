@@ -1,19 +1,24 @@
 'use strict';
 
-
 angular
   .module('core')
-  .controller('TimerController', ['$scope', '$timeout', '$rootScope',
+  .controller('TimerController', ['$scope', 
 
-    function($scope, $timeout, $rootScope) {
+    function ($scope) {
 
       $scope.timerRunning = false;
-
+      
       $scope.countdownPomodoro = 937500;
 
       $scope.countdownShortBreak = 7500;
 
       $scope.countdownLongBreak = 112500;
+
+      $scope.pomodoroRunning = true;
+      
+      $scope.shortBreakRunning = false;
+      
+      $scope.longBreakRunning = false;
 
       $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
@@ -41,6 +46,33 @@ angular
           $scope.countdownLongBreak = 112500;
           $scope.$broadcast('timer-set-countdown', $scope.countdownLongBreak);
         }
+      };
+
+      $scope.pomodoro = function() {
+
+        $scope.pomodoroRunning = true;
+        $scope.shortBreakRunning = false;
+        $scope.longBreakRunning = false;
+        $scope.resetTimer('pomodoro');
+
+      };
+
+      $scope.shortBreak = function() {
+
+        $scope.pomodoroRunning = false;
+        $scope.shortBreakRunning = true;
+        $scope.longBreakRunning = false;
+        $scope.resetTimer('shortBreak');
+
+      };
+
+      $scope.longBreak = function() {
+
+        $scope.pomodoroRunning = false;
+        $scope.shortBreakRunning = false;
+        $scope.longBreakRunning = true;
+        $scope.resetTimer('longBreak');
+
       };
 
     }
