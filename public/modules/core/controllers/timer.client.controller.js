@@ -14,12 +14,6 @@ angular
 
       $scope.countdownLongBreak = 112500;
 
-      $scope.pomodoroRunning = true;
-      
-      $scope.shortBreakRunning = false;
-      
-      $scope.longBreakRunning = false;
-
       $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
         $scope.timerRunning = true;
@@ -46,36 +40,6 @@ angular
           $scope.countdownLongBreak = 112500;
           $scope.$broadcast('timer-set-countdown', $scope.countdownLongBreak);
         }
-      };
-
-      $scope.pomodoro = function() {
-
-        $state.go('dashboard.pomodoroTimer');
-        $scope.pomodoroRunning = true;
-        $scope.shortBreakRunning = false;
-        $scope.longBreakRunning = false;
-        $scope.resetTimer('pomodoro');
-
-      };
-
-      $scope.shortBreak = function() {
-
-        $state.go('dashboard.shortBreakTimer');
-        $scope.pomodoroRunning = false;
-        $scope.shortBreakRunning = true;
-        $scope.longBreakRunning = false;
-        $scope.resetTimer('shortBreak');
-
-      };
-
-      $scope.longBreak = function() {
-
-        $state.go('dashboard.longBreakTimer');
-        $scope.pomodoroRunning = false;
-        $scope.shortBreakRunning = false;
-        $scope.longBreakRunning = true;
-        $scope.resetTimer('longBreak');
-
       };
 
     }

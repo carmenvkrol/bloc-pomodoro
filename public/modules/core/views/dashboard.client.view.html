@@ -3,9 +3,15 @@
   <p>DASHBOARD</p>
 
   <div data-ng-controller="TimerController">
-    <button ng-click="pomodoro()">Pomodoro</button>
-    <button ng-click="shortBreak()">Short Break</button>
-    <button ng-click="longBreak()">Long Break</button>
+    <a ui-sref=".pomodoroTimer">
+      <button>Pomodoro</button>
+    </a>
+    <a ui-sref=".shortBreakTimer">
+      <button>Short Break</button>
+    </a>
+    <a ui-sref=".longBreakTimer">
+      <button>Long Break</button>
+    </a>
 
     <div ui-view></div>
 
