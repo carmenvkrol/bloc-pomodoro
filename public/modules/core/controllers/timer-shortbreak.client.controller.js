@@ -8,6 +8,8 @@ angular
 
       $scope.timerRunning = false;
 
+      $scope.countdown = 5; // 5 minutes = 7500
+
       Timer.init($scope);
 
       $scope.startTimer = function (){
@@ -16,6 +18,11 @@ angular
       
       $scope.stopTimer = function (){
         Timer.stopTimer();
+      };
+
+      $scope.resetTimer = function() {
+        $scope.startTimer();
+        Timer.resetTimer(7500);
       };
 
       $scope.$on('timer-stopped', function (event, data){

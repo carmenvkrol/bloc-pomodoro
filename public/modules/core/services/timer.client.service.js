@@ -18,8 +18,9 @@ angular.module('core').factory('Timer', [
 				this.scope.$broadcast('timer-stop');
         this.scope.timerRunning = false;
 			},
-			resetTimer: function(callback) {
-				callback();
+			resetTimer: function(num) {
+				this.scope.countdown = num;
+				this.scope.$broadcast('timer-set-countdown', this.scope.countdown);
 			}
 		};
 	}
