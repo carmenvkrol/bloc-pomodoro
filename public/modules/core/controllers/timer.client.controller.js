@@ -49,14 +49,6 @@ angular
         }
       });
 
-      $scope.$watch('countdownPomodoro', function(){
-        console.log('countdownPomodoro has changed');
-        /*if ($scope.countdownPomodoro === 0) {
-          console.log('countdownPomodoro equals zero');
-          $state.go('dashboard.shortBreakTimer');
-        }*/
-      });
-
     }
 
   ]);
