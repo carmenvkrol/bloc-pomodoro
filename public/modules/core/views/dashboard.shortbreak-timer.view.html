@@ -1,0 +1,11 @@
+<div ng-show="shortBreakRunning" ng-hide="pomodoroRunning || longBreakRunning">
+  <h2>Short Break</h2>
+  <h3>
+    <timer autostart="false" interval="1000" countdown="countdownShortBreak">
+      {{mminutes}} : {{sseconds}}
+    </timer>
+    <button ng-click="startTimer()">Start</button>
+    <button ng-click="stopTimer()">Stop</button>
+    <button ng-click="resetTimer('shortBreak')">Reset</button>
+  </h3>
+</div>

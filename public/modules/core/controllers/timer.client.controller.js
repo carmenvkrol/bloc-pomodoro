@@ -2,9 +2,9 @@
 
 angular
   .module('core')
-  .controller('TimerController', ['$scope', 
+  .controller('TimerController', ['$scope', '$state',
 
-    function ($scope) {
+    function ($scope, $state) {
 
       $scope.timerRunning = false;
       
@@ -50,6 +50,7 @@ angular
 
       $scope.pomodoro = function() {
 
+        $state.go('dashboard.pomodoroTimer');
         $scope.pomodoroRunning = true;
         $scope.shortBreakRunning = false;
         $scope.longBreakRunning = false;
@@ -59,6 +60,7 @@ angular
 
       $scope.shortBreak = function() {
 
+        $state.go('dashboard.shortBreakTimer');
         $scope.pomodoroRunning = false;
         $scope.shortBreakRunning = true;
         $scope.longBreakRunning = false;
@@ -68,6 +70,7 @@ angular
 
       $scope.longBreak = function() {
 
+        $state.go('dashboard.longBreakTimer');
         $scope.pomodoroRunning = false;
         $scope.shortBreakRunning = false;
         $scope.longBreakRunning = true;

@@ -11,6 +11,19 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		state('home', {
 			url: '/',
 			templateUrl: 'modules/core/views/home.client.view.html'
+		})
+		.state('dashboard', {
+			url: '/dashboard',
+			templateUrl: 'modules/core/views/dashboard.client.view.html'
+		})
+		.state('dashboard.pomodoroTimer', {
+			templateUrl:'modules/core/views/dashboard.pomodoro-timer.view.html'
+		})
+		.state('dashboard.shortBreakTimer', {
+			templateUrl:'modules/core/views/dashboard.shortbreak-timer.view.html'
+		})
+		.state('dashboard.longBreakTimer', {
+			templateUrl: 'modules/core/views/dashboard.longbreak-timer.view.html'
 		});
 	}
 ]);
