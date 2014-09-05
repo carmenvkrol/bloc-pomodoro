@@ -1,9 +1,11 @@
-<h2>Pomodoro</h2>
-<h3>
-  <timer autostart="false" interval="1000" countdown="countdownPomodoro">
-    {{mminutes}} : {{sseconds}} 
-  </timer>
-  <button ng-click="startTimer()">Start</button>
-  <button ng-click="stopTimer()">Stop</button>
-  <button ng-click="resetTimer('pomodoro')">Reset</button>
-</h3>
+<div data-ng-controller="TimerPomodoroController">
+  <h2>Pomodoro</h2>
+  <h3>
+    <timer autostart="false" interval="1000" countdown="countdownPomodoro">
+      {{mminutes}} : {{sseconds}} 
+    </timer>
+    <button ng-click="startTimer()">Start</button>
+    <button ng-click="stopTimer()">Stop</button>
+    <button ng-click="resetTimer('pomodoro')">Reset</button>
+  </h3>
+</div>

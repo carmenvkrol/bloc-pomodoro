@@ -2,31 +2,37 @@
 
 angular
   .module('core')
-  .controller('TimerController', ['$scope', '$state',
+  .controller('TimerController', ['$scope', '$state', 'Timer',
 
-    function ($scope, $state) {
+    function ($scope, $state, Timer) {
 
       $scope.timerRunning = false;
       
       $scope.countdownPomodoro = 5; // 25 minutes = 937500
 
-      $scope.countdownShortBreak = 7500; // 5 minutes = 7500
+      $scope.countdownShortBreak = 5; // 5 minutes = 7500
 
       $scope.countdownLongBreak = 112500; // 15 minutes = 112500
 
+      Timer.init($scope);
+
       $scope.startTimer = function (){
-        $scope.$broadcast('timer-start');
-        $scope.timerRunning = true;
+        Timer.startTimer();
       };
- 
+      
       $scope.stopTimer = function (){
         $scope.$broadcast('timer-stop');
         $scope.timerRunning = false;
       };
-
+      $scope.resetTimer = function () {
+        Timer.resetTimer(function () {
+          $scope.countdownPomodoro = 937500;
+          $scope.$broadcast('timer-set-countdown', $scope.countdownPomodoro);
+        });
+      };
       $scope.resetTimer = function (timerType){
         if (timerType === 'pomodoro') {
-          $scope.startTimer();
+          //$scope.startTimer();
           $scope.countdownPomodoro = 937500;
           $scope.$broadcast('timer-set-countdown', $scope.countdownPomodoro);
         }
@@ -41,13 +47,6 @@ angular
           $scope.$broadcast('timer-set-countdown', $scope.countdownLongBreak);
         }
       };
-
-      $scope.$on('timer-stopped', function (event, data){
-        console.log('Timer Stopped - data', data);
-        if (data.seconds === 0 && data.minutes === 0) {
-          $state.go('dashboard.shortBreakTimer');
-        }
-      });
 
     }
 
