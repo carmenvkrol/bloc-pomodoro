@@ -2,7 +2,7 @@
 
 angular
   .module('core')
-  .controller('TimerShortBreakController', ['$scope', '$state', 'Timer',
+  .controller('TimerLongBreakController', ['$scope', '$state', 'Timer',
 
     function ($scope, $state, Timer) {
 

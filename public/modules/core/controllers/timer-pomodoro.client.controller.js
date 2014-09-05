@@ -2,9 +2,21 @@
 
 angular
   .module('core')
-  .controller('TimerPomodoroController', ['$scope', '$state',
+  .controller('TimerPomodoroController', ['$scope', '$state', 'Timer',
 
-    function ($scope, $state) {
+    function ($scope, $state, Timer) {
+
+      $scope.timerRunning = false;
+
+      Timer.init($scope);
+
+      $scope.startTimer = function (){
+        Timer.startTimer();
+      };
+      
+      $scope.stopTimer = function (){
+        Timer.stopTimer();
+      };
 
       $scope.$on('timer-stopped', function (event, data){
         if (data.seconds === 0 && data.minutes === 0) {

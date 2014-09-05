@@ -14,6 +14,10 @@ angular.module('core').factory('Timer', [
 				this.scope.$broadcast('timer-start');
 				this.scope.timerRunning = true;
 			},
+			stopTimer: function() {
+				this.scope.$broadcast('timer-stop');
+        this.scope.timerRunning = false;
+			},
 			resetTimer: function(callback) {
 				callback();
 			}

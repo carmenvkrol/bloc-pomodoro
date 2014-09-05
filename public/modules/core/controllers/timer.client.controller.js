@@ -5,8 +5,6 @@ angular
   .controller('TimerController', ['$scope', '$state', 'Timer',
 
     function ($scope, $state, Timer) {
-
-      $scope.timerRunning = false;
       
       $scope.countdownPomodoro = 5; // 25 minutes = 937500
 
@@ -14,16 +12,6 @@ angular
 
       $scope.countdownLongBreak = 112500; // 15 minutes = 112500
 
-      Timer.init($scope);
-
-      $scope.startTimer = function (){
-        Timer.startTimer();
-      };
-      
-      $scope.stopTimer = function (){
-        $scope.$broadcast('timer-stop');
-        $scope.timerRunning = false;
-      };
       $scope.resetTimer = function () {
         Timer.resetTimer(function () {
           $scope.countdownPomodoro = 937500;
