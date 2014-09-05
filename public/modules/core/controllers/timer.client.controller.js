@@ -8,11 +8,11 @@ angular
 
       $scope.timerRunning = false;
       
-      $scope.countdownPomodoro = 937500;
+      $scope.countdownPomodoro = 5; // 25 minutes = 937500
 
-      $scope.countdownShortBreak = 7500;
+      $scope.countdownShortBreak = 7500; // 5 minutes = 7500
 
-      $scope.countdownLongBreak = 112500;
+      $scope.countdownLongBreak = 112500; // 15 minutes = 112500
 
       $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
@@ -41,6 +41,21 @@ angular
           $scope.$broadcast('timer-set-countdown', $scope.countdownLongBreak);
         }
       };
+
+      $scope.$on('timer-stopped', function (event, data){
+        console.log('Timer Stopped - data', data);
+        if (data.seconds === 0 && data.minutes === 0) {
+          $state.go('dashboard.shortBreakTimer');
+        }
+      });
+
+      $scope.$watch('countdownPomodoro', function(){
+        console.log('countdownPomodoro has changed');
+        /*if ($scope.countdownPomodoro === 0) {
+          console.log('countdownPomodoro equals zero');
+          $state.go('dashboard.shortBreakTimer');
+        }*/
+      });
 
     }
 
