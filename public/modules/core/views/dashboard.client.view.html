@@ -1,17 +1,17 @@
-<section>
+<section class="dashboard">
 
-  <p>DASHBOARD</p>
-
+  <div class="btn-group">
     <a ui-sref=".pomodoroTimer">
-      <button>Pomodoro</button>
+      <button type="button" class="btn btn-default">Pomodoro</button>
     </a>
     <a ui-sref=".shortBreakTimer">
-      <button>Short Break</button>
+      <button type="button" class="btn btn-default">Short Break</button>
     </a>
     <a ui-sref=".longBreakTimer">
-      <button>Long Break</button>
+      <button type="button" class="btn btn-default">Long Break</button>
     </a>
+  </div>
 
-    <div ui-view></div>
+  <div ui-view></div>
 
 </section>
