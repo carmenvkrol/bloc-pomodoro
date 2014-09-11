@@ -34,4 +34,44 @@ body {
     }
 
   }
+
+  .timer {
+    
+    margin-top: 40px;
+
+    h2 {
+      text-align: center;
+      color: @blue-text;
+      font-size: 36px;
+      font-weight: 700;
+    }
+    h3 {
+      text-align: center;
+      color: @blue-text;
+      font-size: 48px;
+      font-weight: 700;
+    }
+    .btn-group {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 30px;
+      display: block;
+      width: 174px;
+    }
+    button.btn.btn-default {
+      border: none;
+      border-right: 2px solid @dashboard-yellow;
+      border-left: 2px solid @dashboard-yellow;
+      box-shadow: none;
+      background-color: @blue-text;
+      background-image: none;
+      text-shadow: none;
+      color: white;
+      &:hover {
+        background-color: white;
+        color: @blue-text;
+      }
+    }
+
+  }
 }

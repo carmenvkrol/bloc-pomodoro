@@ -31,6 +31,48 @@ body {
   background-color: white;
 }
 
+.dashboard .timer {
+  margin-top: 40px;
+}
+
+.dashboard .timer h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.dashboard .timer h3 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.dashboard .timer .btn-group {
+  display: block;
+  width: 174px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dashboard .timer button.btn.btn-default {
+  color: white;
+  text-shadow: none;
+  background-color: #162969;
+  background-image: none;
+  border: none;
+  border-right: 2px solid #fff184;
+  border-left: 2px solid #fff184;
+  box-shadow: none;
+}
+
+.dashboard .timer button.btn.btn-default:hover {
+  color: #162969;
+  background-color: white;
+}
+
 a.navbar-brand {
   color: white;
 }

@@ -1,11 +1,13 @@
-<div data-ng-controller="TimerPomodoroController">
+<div data-ng-controller="TimerPomodoroController" class="timer">
   <h2>Pomodoro</h2>
   <h3>
     <timer autostart="false" interval="1000" countdown="countdown">
       {{mminutes}} : {{sseconds}} 
     </timer>
-    <button ng-click="startTimer()">Start</button>
-    <button ng-click="stopTimer()">Stop</button>
-    <button ng-click="resetTimer()">Reset</button>
   </h3>
+  <div class="btn-group">
+    <button ng-click="startTimer()" class="btn btn-default">Start</button>
+    <button ng-click="stopTimer()" class="btn btn-default">Stop</button>
+    <button ng-click="resetTimer()" class="btn btn-default">Reset</button>
+  </div>
 </div>
