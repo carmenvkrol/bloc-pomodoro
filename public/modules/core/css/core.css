@@ -2,6 +2,35 @@ body {
   background-color: #fff184;
 }
 
+.dashboard {
+  margin-top: 36px;
+}
+
+.dashboard .btn-group {
+  display: block;
+  width: 353px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dashboard .btn-group a {
+  text-decoration: none;
+}
+
+.dashboard .btn-group a button.btn.btn-default {
+  color: white;
+  text-shadow: none;
+  background-color: #ff342e;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+.dashboard .btn-group a button.btn.btn-default:hover {
+  color: #ff342e;
+  background-color: white;
+}
+
 a.navbar-brand {
   color: white;
 }

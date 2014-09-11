@@ -5,3 +5,33 @@
 body {
   background-color: @dashboard-yellow;
 }
+
+.dashboard {
+  margin-top: 36px;
+
+  .btn-group {
+
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 353px;
+
+    a {
+      text-decoration: none;
+
+      button.btn.btn-default {
+        border: none;
+        box-shadow: none;
+        background-color: @pomodoro-red;
+        background-image: none;
+        text-shadow: none;
+        color: white;
+        &:hover {
+          background-color: white;
+          color: @pomodoro-red;
+        }
+      }
+    }
+
+  }
+}
