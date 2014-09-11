@@ -8,7 +8,7 @@ angular
 
       $scope.timerRunning = false;
 
-      $scope.countdown = 112500; // 15 minutes = 112500
+      $scope.countdown = 5; // 15 minutes = 112500
 
       Timer.init($scope);
 
@@ -24,12 +24,6 @@ angular
         $scope.startTimer();
         Timer.resetTimer(112500);
       };
-
-      $scope.$on('timer-stopped', function (event, data){
-        if (data.seconds === 0 && data.minutes === 0) {
-          $state.go('dashboard.pomodoroTimer');
-        }
-      });
     
     }
 

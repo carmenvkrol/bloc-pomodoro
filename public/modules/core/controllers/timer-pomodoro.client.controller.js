@@ -2,9 +2,9 @@
 
 angular
   .module('core')
-  .controller('TimerPomodoroController', ['$scope', '$state', 'Timer',
+  .controller('TimerPomodoroController', ['$scope', '$state', '$stateParams', 'Timer',
 
-    function ($scope, $state, Timer) {
+    function ($scope, $state, $stateParams, Timer) {
 
       $scope.timerRunning = false;
 
@@ -26,8 +26,15 @@ angular
       };
 
       $scope.$on('timer-stopped', function (event, data){
+        console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          $state.go('dashboard.shortBreakTimer');
+          $state.transitionTo($state.current, 
+                              $stateParams, 
+                              {
+                                reload: true,
+                                inherit: false,
+                                notify: true
+                              });
         }
       });
     
