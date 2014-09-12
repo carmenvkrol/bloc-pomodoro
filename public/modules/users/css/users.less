@@ -1,3 +1,6 @@
+@pomodoro-red: #FF342E;
+@blue-text: #162969;
+
 @media (min-width: 992px) {
   .nav-users {
     position: fixed;
@@ -13,4 +16,41 @@
   top: 10px;
   right: 10px;
   position: absolute;
+}
+
+.form {
+  color: @blue-text;
+
+  h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  form {
+
+    fieldset.edit-profile {
+      margin-top: 20px;
+    }
+
+    button.btn.btn-primary {
+      border: none;
+      box-shadow: none;
+      background-image: none;
+      background-color: @pomodoro-red;
+
+      &:hover {
+        background-color: white;
+        color: @pomodoro-red;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: @pomodoro-red;
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
 }
