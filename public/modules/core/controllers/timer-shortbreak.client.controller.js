@@ -28,13 +28,7 @@ angular
       $scope.$on('timer-stopped', function (event, data){
         console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          $state.transitionTo($state.current,
-                              $stateParams,
-                              {
-                                reload: true,
-                                inherit: false,
-                                notify: true
-                              });
+          $state.go('dashboard.pomodoroTimer');
         }
       });
     
