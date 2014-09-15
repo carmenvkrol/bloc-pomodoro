@@ -41,6 +41,8 @@
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
+
+	<link href="/modules/core/music/alarm-clock.mp3">
 </head>
 
 <body class="ng-cloak">
@@ -61,6 +63,7 @@
 	{% endfor %} 
 
 	<script type="text/javascript" src="lib/angular-timer/app/js/timer.js"></script>
+	<script type="text/javascript" src="lib/howler/howler.min.js"></script>
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->

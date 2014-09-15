@@ -2,9 +2,9 @@
 
 angular
   .module('core')
-  .controller('TimerLongBreakController', ['$scope', '$state', 'Timer',
+  .controller('TimerLongBreakController', ['$scope', '$state', 'Timer', 'Ding',
 
-    function ($scope, $state, Timer) {
+    function ($scope, $state, Timer, Ding) {
 
       $scope.timerRunning = false;
 
@@ -25,6 +25,13 @@ angular
         Timer.resetTimer(112500);
       };
     
+      $scope.$on('timer-stopped', function (event, data){
+        console.log(data);
+        if (data.seconds === 0 && data.minutes === 0) {
+          Ding.ding();
+        }
+      });
+
     }
 
 ]);
