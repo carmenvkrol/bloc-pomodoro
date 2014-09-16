@@ -43,6 +43,7 @@
 	<![endif]-->
 
 	<link href="/modules/core/music/alarm-clock.mp3">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 
 <body class="ng-cloak">
@@ -61,9 +62,6 @@
 	<!--Application JavaScript Files-->
 	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
 	{% endfor %} 
-
-	<script type="text/javascript" src="lib/angular-timer/app/js/timer.js"></script>
-	<script type="text/javascript" src="lib/howler/howler.min.js"></script>
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->

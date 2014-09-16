@@ -28,7 +28,8 @@ angular
       $scope.$on('timer-stopped', function (event, data){
         console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          Ding.ding();
+          //Ding.ding();
+          console.log('blah');
         }
       });
 

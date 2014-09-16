@@ -28,8 +28,9 @@ angular
       $scope.$on('timer-stopped', function (event, data){
         console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          Ding.ding();
-          $state.go('dashboard.shortBreakTimer');
+          //Ding.ding();
+          //$state.go('dashboard.shortBreakTimer');
+          $('#shortBreakLink').click();
         }
       });
     
