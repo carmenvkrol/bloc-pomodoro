@@ -88,12 +88,7 @@ var UserSchema = new Schema({
 	},
   	resetPasswordExpires: {
   		type: Date
-  	},
-  /* attach tasks to user profile */
-  /*todos: [{
-  	type: mongoose.Schema.Type.ObjectId,
-  	ref: 'Task'
-  }]*/
+  	}
 });
 
 /**
@@ -149,12 +144,3 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 };
 
 mongoose.model('User', UserSchema);
-
-//ToDo Variable
-var taskSchema = new mongoose.Schema({
-	userid: String,
-	task: String,
-	status: String
-});
-
-mongoose.model('Task', taskSchema);
