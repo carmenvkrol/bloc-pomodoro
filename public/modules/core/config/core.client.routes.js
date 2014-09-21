@@ -14,9 +14,11 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 		})
 		.state('dashboard', {
 			url: '/dashboard',
+			abstract: true,
 			templateUrl: 'modules/core/views/dashboard.client.view.html'
 		})
 		.state('dashboard.pomodoroTimer', {
+			url: '',
 			templateUrl:'modules/core/views/dashboard.pomodoro-timer.view.html'
 		})
 		.state('dashboard.shortBreakTimer', {
