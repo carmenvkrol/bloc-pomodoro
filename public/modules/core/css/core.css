@@ -1,1 +1,279 @@
-body{background-color:#fff184}.dashboard{margin-top:36px}.dashboard .btn-group{margin-left:auto;margin-right:auto;display:block;width:353px}.dashboard .btn-group a{text-decoration:none}.dashboard .btn-group a button.btn.btn-default{border:none;box-shadow:none;background-color:#ff342e;background-image:none;text-shadow:none;color:white}.dashboard .btn-group a button.btn.btn-default:hover{background-color:white;color:#ff342e}.dashboard .timer{margin-top:40px}.dashboard .timer h2{text-align:center;color:#162969;font-size:36px;font-weight:700}.dashboard .timer h3{text-align:center;color:#162969;font-size:48px;font-weight:700}.dashboard .timer .btn-group{margin-left:auto;margin-right:auto;margin-top:30px;display:block;width:174px}.dashboard .timer button.btn.btn-default{border:none;border-right:2px solid #fff184;border-left:2px solid #fff184;box-shadow:none;background-color:#162969;background-image:none;text-shadow:none;color:white}.dashboard .timer button.btn.btn-default:hover{background-color:white;color:#162969}a.navbar-brand{color:white}a{color:white}header{background-color:#ff342e;background-image:none}.main-image1{position:relative;top:0}.main-image1 img{height:100%;width:100%}.main-image2{position:absolute;top:50px;left:0;z-index:2;background-color:#ffe525;opacity:0.85;width:100%;height:750px}.tagline{position:absolute;top:250px;left:0;width:100%;z-index:3}.tagline h1{text-align:center;font-size:100px;font-weight:900;color:#162969}.tagline h2{text-align:center;font-size:36px;font-weight:700;color:#162969}.tagline .button-container{margin-top:50px}.tagline .button-container a{display:inherit}.tagline .button-container a:hover{text-decoration:none}.tagline button{display:inherit;margin-left:auto;margin-right:auto;box-shadow:none;border:none;background-color:#ff342e;background-image:none;color:white;text-shadow:none;font-size:20px}body{font-family:'Lato',sans-serif}.content{margin-top:50px}.undecorated-link:hover{text-decoration:none}[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none !important}.ng-invalid.ng-dirty{border-color:#FA787E}.ng-valid.ng-dirty{border-color:#78FA89}
+body {
+  background-color: #fff184;
+}
+
+.dashboard {
+  margin-top: 36px;
+}
+
+.dashboard .btn-group {
+  display: block;
+  width: 353px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dashboard .btn-group a {
+  text-decoration: none;
+}
+
+.dashboard .btn-group a button.btn.btn-default {
+  color: white;
+  text-shadow: none;
+  background-color: #ff342e;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+.dashboard .btn-group a button.btn.btn-default:hover {
+  color: #ff342e;
+  background-color: white;
+}
+
+.dashboard .timer {
+  margin-top: 40px;
+}
+
+.dashboard .timer h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.dashboard .timer h3 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.dashboard .timer .btn-group {
+  display: block;
+  width: 174px;
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dashboard .timer button.btn.btn-default {
+  color: white;
+  text-shadow: none;
+  background-color: #162969;
+  background-image: none;
+  border: none;
+  border-right: 2px solid #fff184;
+  border-left: 2px solid #fff184;
+  box-shadow: none;
+}
+
+.dashboard .timer button.btn.btn-default:hover {
+  color: #162969;
+  background-color: white;
+}
+
+.dashboard .tasks h1 {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.dashboard .tasks .form-group {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dashboard .tasks .form-group .controls input {
+  display: inline-block;
+}
+
+.dashboard .tasks .form-group .controls input:first-child {
+  float: left;
+  width: 88%;
+  background-color: #fffbdc;
+  border: 2px #ff342e solid;
+}
+
+.dashboard .tasks .form-group .controls input:last-child {
+  float: left;
+  margin-left: 10px;
+}
+
+.dashboard .tasks .form-group .controls input.btn.btn-default {
+  color: white;
+  text-shadow: none;
+  background-color: #ff342e;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+.dashboard .tasks .form-group .controls input.btn.btn-default:hover {
+  color: #ff342e;
+  background-color: white;
+}
+
+.dashboard .tasks .list-group {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px #ff342e solid;
+}
+
+.dashboard .tasks .list-group .list-group-item {
+  background-color: #fffbdc;
+  border: 1px #ff342e solid;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container {
+  margin-bottom: 25px;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container h4 {
+  display: inline-block;
+  float: left;
+  color: #162969;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container a {
+  display: inline-block;
+  float: right;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container a i.glyphicon.glyphicon-ok {
+  font-size: 22px;
+  color: #ff342e;
+  text-shadow: none;
+}
+
+.dashboard .tasks .list-group .list-group-item small {
+  display: block;
+  color: #162969;
+}
+
+.btn-primary {
+  text-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+a.navbar-brand {
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+header {
+  background-color: #ff342e;
+  background-image: none;
+}
+
+.main-image1 {
+  position: relative;
+  top: 0;
+}
+
+.main-image1 img {
+  width: 100%;
+  height: 100%;
+}
+
+.main-image2 {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 750px;
+  background-color: #ffe525;
+  opacity: 0.85;
+}
+
+.tagline {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+}
+
+.tagline h1 {
+  font-size: 100px;
+  font-weight: 900;
+  color: #162969;
+  text-align: center;
+}
+
+.tagline h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.tagline .button-container {
+  margin-top: 50px;
+}
+
+.tagline .button-container a {
+  display: inherit;
+}
+
+.tagline .button-container a:hover {
+  text-decoration: none;
+}
+
+.tagline button {
+  display: inherit;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 20px;
+  color: white;
+  text-shadow: none;
+  background-color: #ff342e;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.content {
+  margin-top: 50px;
+}
+
+.undecorated-link:hover {
+  text-decoration: none;
+}
+
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty {
+  border-color: #78FA89;
+}

@@ -72,3 +72,98 @@ body {
   color: #162969;
   background-color: white;
 }
+
+.dashboard .tasks h1 {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #162969;
+  text-align: center;
+}
+
+.dashboard .tasks .form-group {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.dashboard .tasks .form-group .controls input {
+  display: inline-block;
+}
+
+.dashboard .tasks .form-group .controls input:first-child {
+  float: left;
+  width: 88%;
+  background-color: #fffbdc;
+  border: 2px #ff342e solid;
+}
+
+.dashboard .tasks .form-group .controls input:last-child {
+  float: left;
+  margin-left: 10px;
+}
+
+.dashboard .tasks .form-group .controls input.btn.btn-default {
+  color: white;
+  text-shadow: none;
+  background-color: #ff342e;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+.dashboard .tasks .form-group .controls input.btn.btn-default:hover {
+  color: #ff342e;
+  background-color: white;
+}
+
+.dashboard .tasks .list-group {
+  width: 60%;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px #ff342e solid;
+}
+
+.dashboard .tasks .list-group .list-group-item {
+  background-color: #fffbdc;
+  border: 1px #ff342e solid;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container {
+  margin-bottom: 25px;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container h4 {
+  display: inline-block;
+  float: left;
+  color: #162969;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container a {
+  display: inline-block;
+  float: right;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+}
+
+.dashboard .tasks .list-group .list-group-item .task-container a i.glyphicon.glyphicon-ok {
+  font-size: 22px;
+  color: #ff342e;
+  text-shadow: none;
+}
+
+.dashboard .tasks .list-group .list-group-item small {
+  display: block;
+  color: #162969;
+}
+
+.btn-primary {
+  text-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}

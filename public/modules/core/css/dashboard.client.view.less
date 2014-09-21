@@ -1,4 +1,5 @@
 @dashboard-yellow: #fff184;
+@task-yellow: #fffbdc;
 @pomodoro-red: #FF342E;
 @blue-text: #162969;
 
@@ -74,4 +75,90 @@ body {
     }
 
   }
+
+  .tasks {
+    h1 {
+      padding-top: 40px;
+      padding-bottom: 20px;
+      text-align: center;
+      color: @blue-text;
+      font-size: 36px;
+      font-weight: 700;
+    }
+    .form-group {
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      .controls {
+        input {
+          display: inline-block;
+          &:first-child {
+            float: left;
+            background-color: @task-yellow;
+            border: 2px @pomodoro-red solid;
+            width: 88%;
+          }
+          &:last-child {
+            float: left;
+            margin-left: 10px;
+          }
+        }
+        input.btn.btn-default {
+            border: none;
+            box-shadow: none;
+            background-color: @pomodoro-red;
+            background-image: none;
+            text-shadow: none;
+            color: white;
+            &:hover {
+              background-color: white;
+              color: @pomodoro-red;
+            }
+        }
+      }
+    }
+    .list-group {
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px @pomodoro-red solid;
+      width: 60%;
+        .list-group-item {
+          background-color: @task-yellow;
+          border: 1px @pomodoro-red solid;
+          .task-container {
+            margin-bottom: 25px;
+            h4 {
+              display: inline-block;
+              float: left;
+              color: @blue-text;
+            }
+            a {
+              display: inline-block;
+              float: right;
+              background-image: none;
+              background-color: transparent;
+              border: none;
+              i.glyphicon.glyphicon-ok {
+                color: @pomodoro-red;
+                text-shadow: none;
+                font-size: 22px;
+              }
+            }
+          }
+          small {
+            display: block;
+            color: @blue-text;
+          }
+      }
+    }
+  }
+}
+
+.btn-primary {
+  background-image: none;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  text-shadow: none;
 }
