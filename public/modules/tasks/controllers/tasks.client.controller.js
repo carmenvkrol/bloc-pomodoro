@@ -36,6 +36,8 @@ angular.module('tasks').controller('TasksController', ['$scope', '$stateParams',
 						$scope.tasks.splice(i, 1);
 					}
 				}
+
+				$scope.find();
 			} else {
 				$scope.task.$remove(function() {
 					$location.path('tasks');
