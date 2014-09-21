@@ -28,7 +28,9 @@ angular
       $scope.$on('timer-stopped', function (event, data){
         console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          Ding.ding();
+          //Ding.ding();
+          $scope.counters.shortBreakCounter += 1;
+          console.log($scope.counters.shortBreakCounter);
           //$state.go('dashboard.pomodoroTimer')
           $('#pomodoroLink').click();
         }

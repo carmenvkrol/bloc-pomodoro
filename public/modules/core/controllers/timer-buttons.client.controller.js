@@ -5,10 +5,10 @@ angular.module('core').controller('TimerButtonsController', ['$scope',
 		// Timer buttons controller logic
 		// ...
 
-    var pomodoroCounter = 0;
-    var shortBreakCounter = 0;
-    var longBreakCounter = 0;
-
+    $scope.counters = {
+      pomodoroCounter: 0,
+      shortBreakCounter: 0
+    };
 
 	}
 ]);

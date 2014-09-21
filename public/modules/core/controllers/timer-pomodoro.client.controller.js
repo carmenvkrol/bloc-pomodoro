@@ -28,10 +28,15 @@ angular
       $scope.$on('timer-stopped', function (event, data){
         console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          Ding.ding();
-          //$state.go('dashboard.shortBreakTimer');
-          $('#shortBreakLink').click();
-          $scope.$parent.pomodoroCounter += 1;
+          $scope.counters.pomodoroCounter += 1;
+          console.log($scope.counters.pomodorCounter);
+          if (($scope.counters.pomodoroCounter %4 === 0 && $scope.counters.shortBreakCounter %3 === 0) && ($scope.counters.pomodoroCounter !== 0 && $scope.counters.shortBreakCounter !== 0)) {
+            //Ding.ding();
+            $('#longBreakLink').click();
+          } else if (($scope.counters.pomodoroCounter %4 !== 0 && $scope.counters.shortBreakCounter %3 !== 0) || ($scope.counters.pomodoroCounter === 0 || $scope.counters.shortBreakCounter === 0)) {
+            //Ding.ding();
+            $('#shortBreakLink').click();
+          }
         }
       });
     
