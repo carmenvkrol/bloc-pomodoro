@@ -25,14 +25,15 @@ angular
         Timer.resetTimer(7500);
       };
 
+      $scope.switchTimer = function() {
+        Ding.ding();
+        $scope.counters.shortBreakCounter += 1;
+        //$('#pomodoroLink').click();
+      };
+
       $scope.$on('timer-stopped', function (event, data){
-        console.log(data);
         if (data.seconds === 0 && data.minutes === 0) {
-          //Ding.ding();
-          $scope.counters.shortBreakCounter += 1;
-          console.log($scope.counters.shortBreakCounter);
-          //$state.go('dashboard.pomodoroTimer')
-          $('#pomodoroLink').click();
+          $scope.switchTimer();
         }
       });
     
