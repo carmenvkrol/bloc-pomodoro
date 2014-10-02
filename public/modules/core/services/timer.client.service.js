@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('core').factory('Timer', [
-	'$interval',
-	function($interval) {
+	'$interval', 'Ding',
+	function($interval, Ding) {
 		// Timer service logic
 		// ...
 		// Public API
@@ -13,10 +13,16 @@ angular.module('core').factory('Timer', [
 				return countdown;
 			},
 			startTimer: function(time) {
+				var self = this;
 				if (angular.isDefined(stop)) return;
 				stop = $interval(function(){
 					countdown = time;
-					time--;
+					if (time === 0) {
+						Ding.ding();
+						self.stopTimer();
+					} else if (time > 0) {
+						time--;
+					}
 				}, 1000);
 			},
 			stopTimer: function() {
@@ -27,7 +33,7 @@ angular.module('core').factory('Timer', [
 			},
 			resetTimer: function(time) {
 				countdown = time;
-			}
+			},
 		};
 	}
 ]);
