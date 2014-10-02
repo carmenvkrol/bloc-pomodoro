@@ -31,7 +31,8 @@ angular
           //Ding.ding();
           $scope.counters.pomodoroCounter = 0;
           $scope.counters.shortBreakCounter = 0;
-          $('#pomodoroLink').click();
+          //$('#pomodoroLink').click();
+          $state.go('dashboard.pomodoroTimer');
         }
       });
 

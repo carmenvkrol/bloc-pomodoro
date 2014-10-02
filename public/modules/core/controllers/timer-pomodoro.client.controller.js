@@ -32,10 +32,12 @@ angular
           console.log($scope.counters.pomodorCounter);
           if (($scope.counters.pomodoroCounter %4 === 0 && $scope.counters.shortBreakCounter %3 === 0) && ($scope.counters.pomodoroCounter !== 0 && $scope.counters.shortBreakCounter !== 0)) {
             //Ding.ding();
-            $('#longBreakLink').click();
+            //$('#longBreakLink').click();
+            $state.go('dashboard.longBreakTimer');
           } else if (($scope.counters.pomodoroCounter %4 !== 0 && $scope.counters.shortBreakCounter %3 !== 0) || ($scope.counters.pomodoroCounter === 0 || $scope.counters.shortBreakCounter === 0)) {
             //Ding.ding();
-            $('#shortBreakLink').click();
+            //$('#shortBreakLink').click();
+            $state.go('dashboard.shortBreakTimer');
           }
         }
       });

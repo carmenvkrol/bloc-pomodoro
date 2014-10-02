@@ -1,26 +1,32 @@
 'use strict';
 
 angular.module('core').factory('Timer', [
-	function() {
+	'$interval',
+	function($interval) {
 		// Timer service logic
 		// ...
-
 		// Public API
+		var countdown;
+		var stop;
 		return {
-			init: function(scope) {
-				this.scope = scope;
+			countdown: function(){ 
+				return countdown;
 			},
-			startTimer: function() {
-				this.scope.$broadcast('timer-start');
-				this.scope.timerRunning = true;
+			startTimer: function(time) {
+				if (angular.isDefined(stop)) return;
+				stop = $interval(function(){
+					countdown = time;
+					time--;
+				}, 1000);
 			},
 			stopTimer: function() {
-				this.scope.$broadcast('timer-stop');
-        this.scope.timerRunning = false;
+				if (angular.isDefined(stop)) {
+        	$interval.cancel(stop);
+        	stop = undefined;
+      	}
 			},
-			resetTimer: function(num) {
-				this.scope.countdown = num;
-				this.scope.$broadcast('timer-set-countdown', this.scope.countdown);
+			resetTimer: function(time) {
+				countdown = time;
 			}
 		};
 	}

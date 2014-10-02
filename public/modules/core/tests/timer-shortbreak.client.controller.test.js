@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 
 (function() {
   describe('TimerShortBreakController', function() {
@@ -21,24 +21,26 @@
       TimerShortBreakController = $controller('TimerShortBreakController', {
         $scope: scope
       });
+
+      spyOn(TimerShortBreakController.Ding, 'ding');
     }));
 
-    var dingSpy, 
-        ding;
-    beforeEach(function(){
-        dingSpy = {
-          ding : function() {
-            var ding = new Howl({
-                urls: [''],
-                sprite: {
-                brief: [0, 3000]
-                }
-            })
-            ding.play('brief');
-            }  
-        }
-        spyOn(dingSpy, 'ding');
-    });
+    // var dingSpy, 
+    //     ding;
+    // beforeEach(function(){
+    //     dingSpy = {
+    //       ding : function() {
+    //         var ding = new Howl({
+    //             urls: [''],
+    //             sprite: {
+    //             brief: [0, 3000]
+    //             }
+    //         })
+    //         ding.play('brief');
+    //         }  
+    //     }
+    //     spyOn(dingSpy, 'ding');
+    // });
 
     it('should initialize timerRunning to false', function() {
       expect(scope.timerRunning).toBeFalsy();
@@ -69,7 +71,7 @@
           shortBreakCounter: 0
         };
         scope.switchTimer();
-        expect(dingSpy.ding).toHaveBeenCalled();
+        expect(TimerShortBreakController.Ding.ding).toHaveBeenCalled();
         expect(scope.counters.shortBreakCounter).toEqual(1);
         //TEST click on pomodoroLink
     });

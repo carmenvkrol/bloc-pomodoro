@@ -2,40 +2,46 @@
 
 angular
   .module('core')
-  .controller('TimerShortBreakController', ['$scope', '$state', '$stateParams', 'Timer', 'Ding',
+  .controller('TimerShortBreakController', ['$scope', '$interval', 'Timer',
 
-    function ($scope, $state, $stateParams, Timer, Ding) {
+    function ($scope, $interval, Timer) {
 
-      $scope.timerRunning = false;
+      /*this.Ding = Ding;
+      var self = this;*/
 
-      $scope.countdown = 5; // 5 minutes = 7500
+      $scope.countdown = Timer.countdown;
+      Timer.resetTimer(5000);
+
 
       Timer.init($scope);
 
-      $scope.startTimer = function (){
-        Timer.startTimer();
+      $scope.startTimer = function() {
+        Timer.startTimer(5000);
       };
-      
-      $scope.stopTimer = function (){
+
+      $scope.stopTimer = function() {
         Timer.stopTimer();
       };
 
       $scope.resetTimer = function() {
-        $scope.startTimer();
-        Timer.resetTimer(7500);
+        Timer.stopTimer();
+        Timer.resetTimer(5000);
       };
 
-      $scope.switchTimer = function() {
-        Ding.ding();
+      /*$scope.switchTimer = function() {
+        self.Ding.ding();
         $scope.counters.shortBreakCounter += 1;
         //$('#pomodoroLink').click();
+        setTimeout(function () {
+          $state.go('dashboard.pomodoroTimer');
+        }, 300);
       };
 
       $scope.$on('timer-stopped', function (event, data){
         if (data.seconds === 0 && data.minutes === 0) {
           $scope.switchTimer();
         }
-      });
+      });*/
     
     }
 
