@@ -2,9 +2,9 @@
 
 angular
   .module('core')
-  .controller('TimerShortBreakController', ['$scope', '$interval', '$state', '$stateParams', 'Timer',
+  .controller('TimerShortBreakController', ['$scope', 'Timer',
 
-    function ($scope, $interval, $state, $stateParams, Timer) {
+    function ($scope, Timer) {
 
       /*this.Ding = Ding;
       var self = this;*/

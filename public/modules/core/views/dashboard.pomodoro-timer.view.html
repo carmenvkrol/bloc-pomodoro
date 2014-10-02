@@ -1,9 +1,8 @@
-<div data-ng-controller="TimerPomodoroController" class="timer">
+<div class="timer">
+<div data-ng-controller="TimerPomodoroController">
   <h2>Pomodoro</h2>
   <h3>
-    <timer autostart="false" interval="1000" countdown="countdown">
-      {{mminutes}} : {{sseconds}} 
-    </timer>
+    {{countdown()}}
   </h3>
   <div class="btn-group">
     <button ng-click="startTimer()" class="btn btn-default">Start</button>
@@ -46,4 +45,5 @@
     <!--<div class="alert alert-warning text-center" data-ng-hide="!tasks.$resolved || tasks.length">
       No Tasks yet, why don't you <a href="/#!/tasks/create">create one</a>?
     </div>-->
+</div>
 </div>

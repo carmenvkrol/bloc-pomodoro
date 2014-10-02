@@ -2,45 +2,25 @@
 
 angular
   .module('core')
-  .controller('TimerPomodoroController', ['$scope', '$state', '$stateParams', 'Timer', 'Ding',
+  .controller('TimerPomodoroController', ['$scope', 'Timer',
 
-    function ($scope, $state, $stateParams, Timer, Ding) {
+    function ($scope, Timer) {
 
-      $scope.timerRunning = false;
+      $scope.countdown = Timer.countdown;
+      Timer.resetTimer(5); //should be 25 minutes
 
-      $scope.countdown = 5; // 25 minutes = 937500
-
-      Timer.init($scope);
-
-      $scope.startTimer = function (){
-        Timer.startTimer();
+      $scope.startTimer = function() {
+        Timer.startTimer(5);
       };
-      
-      $scope.stopTimer = function (){
+
+      $scope.stopTimer = function() {
         Timer.stopTimer();
       };
 
       $scope.resetTimer = function() {
-        $scope.startTimer();
-        Timer.resetTimer(937500);
+        Timer.stopTimer();
+        Timer.resetTimer(5);
       };
-
-      $scope.$on('timer-stopped', function (event, data){
-        console.log(data);
-        if (data.seconds === 0 && data.minutes === 0) {
-          $scope.counters.pomodoroCounter += 1;
-          console.log($scope.counters.pomodorCounter);
-          if (($scope.counters.pomodoroCounter %4 === 0 && $scope.counters.shortBreakCounter %3 === 0) && ($scope.counters.pomodoroCounter !== 0 && $scope.counters.shortBreakCounter !== 0)) {
-            //Ding.ding();
-            //$('#longBreakLink').click();
-            $state.go('dashboard.longBreakTimer');
-          } else if (($scope.counters.pomodoroCounter %4 !== 0 && $scope.counters.shortBreakCounter %3 !== 0) || ($scope.counters.pomodoroCounter === 0 || $scope.counters.shortBreakCounter === 0)) {
-            //Ding.ding();
-            //$('#shortBreakLink').click();
-            $state.go('dashboard.shortBreakTimer');
-          }
-        }
-      });
     
     }
 
