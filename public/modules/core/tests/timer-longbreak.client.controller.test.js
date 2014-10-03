@@ -35,7 +35,7 @@
     it('stopTimer should call stopTimer function from timer service', function () {
       scope.resetTimer();
       expect(TimerLongBreakController.timer.stopTimer).toHaveBeenCalled();
-      expect(TimerLongBreakController.timer.resetTimer).toHaveBeenCalledWith(5);
+      expect(TimerLongBreakController.timer.resetTimer).toHaveBeenCalledWith(900);
     });
 
   });

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').factory('Ding', [
+angular.module('core').factory('ding', [
   function() {
     // Ding service logic
     // ...
@@ -11,7 +11,7 @@ angular.module('core').factory('Ding', [
         var ding = new Howl({
           urls: ['modules/core/music/alarm-clock.mp3'],
           sprite: {
-            brief: [0, 3000]
+            brief: [0, 2800]
           }
         })
         ding.play('brief');

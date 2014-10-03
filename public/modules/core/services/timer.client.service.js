@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('core').factory('timer', [
-	'$interval', 'Ding',
-	function($interval, Ding) {
+	'$interval', 'ding',
+	function($interval, ding) {
 		// Timer service logic
 		// ...
 		// Public API
@@ -21,7 +21,7 @@ angular.module('core').factory('timer', [
 				stop = $interval(function(){
 					countdown = time;
 					if (time === 0) {
-						Ding.ding();
+						ding.ding();
 						self.stopTimer();
 					} else if (time > 0) {
 						time--;
