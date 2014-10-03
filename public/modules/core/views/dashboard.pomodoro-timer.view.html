@@ -2,7 +2,7 @@
 <div data-ng-controller="TimerPomodoroController">
   <h2>Pomodoro</h2>
   <h3>
-    {{countdown()}}
+    {{countdown() | timecode}}
   </h3>
   <div class="btn-group">
     <button ng-click="startTimer()" class="btn btn-default">Start</button>

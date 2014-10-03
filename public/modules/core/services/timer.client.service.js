@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').factory('Timer', [
+angular.module('core').factory('timer', [
 	'$interval', 'Ding',
 	function($interval, Ding) {
 		// Timer service logic
@@ -11,6 +11,9 @@ angular.module('core').factory('Timer', [
 		return {
 			countdown: function(){ 
 				return countdown;
+			},
+			stop: function(){
+				return stop;
 			},
 			startTimer: function(time) {
 				var self = this;

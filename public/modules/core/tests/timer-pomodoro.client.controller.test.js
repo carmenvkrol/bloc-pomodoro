@@ -10,43 +10,33 @@
     beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
     var rootScope;
-    beforeEach(inject(function($injector) {
-            rootScope = $injector.get('$rootScope');
-                spyOn(rootScope, '$broadcast');
-    }));
-
     beforeEach(inject(function($controller, $rootScope) {
       scope = $rootScope.$new();
 
       TimerPomodoroController = $controller('TimerPomodoroController', {
         $scope: scope
       });
+
+        spyOn(TimerPomodoroController.timer, 'startTimer');
+        spyOn(TimerPomodoroController.timer, 'stopTimer');
+        spyOn(TimerPomodoroController.timer, 'resetTimer');
     }));
 
-    it('should initialize timerRunning to false', function() {
-      expect(scope.timerRunning).toBeFalsy();
+    it('startTimer should call startTimer function from timer service', function() {
+      scope.startTimer();
+      expect(TimerPomodoroController.timer.startTimer).toHaveBeenCalled();
     });
 
-    it('should start the timer', function () {
-        scope.startTimer();
-        expect(rootScope.$broadcast).toHaveBeenCalledWith('timer-start');
-        expect(scope.timerRunning).toBeTruthy();
+    it('stopTimer should call stopTimer function from timer service', function () {
+      scope.stopTimer();
+      expect(TimerPomodoroController.timer.stopTimer).toHaveBeenCalled();
     });
 
-    it('should stop the timer', function(){
-        scope.stopTimer();
-        expect(rootScope.$broadcast).toHaveBeenCalledWith('timer-stop');
-        expect(scope.timerRunning).toBeFalsy();
+    it('stopTimer should call stopTimer function from timer service', function () {
+      scope.resetTimer();
+      expect(TimerPomodoroController.timer.stopTimer).toHaveBeenCalled();
+      expect(TimerPomodoroController.timer.resetTimer).toHaveBeenCalledWith(5);
     });
-
-    it('should reset the timer', function(){
-        scope.startTimer();
-        scope.resetTimer(937500);
-        expect(rootScope.$broadcast).toHaveBeenCalledWith('timer-start');
-        expect(rootScope.$broadcast).toHaveBeenCalledWith('timer-set-countdown', 937500);
-        expect(scope.countdown).toEqual(937500);       
-    });
-
 
   });
 })();

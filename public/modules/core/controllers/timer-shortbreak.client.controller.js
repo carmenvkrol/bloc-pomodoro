@@ -2,27 +2,28 @@
 
 angular
   .module('core')
-  .controller('TimerShortBreakController', ['$scope', 'Timer',
+  .controller('TimerShortBreakController', ['$scope', 'timer',
 
-    function ($scope, Timer) {
+    function ($scope, timer) {
 
-      /*this.Ding = Ding;
-      var self = this;*/
+      this.timer = timer;
+      var self = this;
 
-      $scope.countdown = Timer.countdown;
-      Timer.resetTimer(5); //should be 5 minutes
+      $scope.countdown = timer.countdown;
+      var seconds = 5; //should be 5 minutes or 300 seconds
+      self.timer.resetTimer(seconds);
 
       $scope.startTimer = function() {
-        Timer.startTimer(5);
+        self.timer.startTimer(seconds);
       };
 
       $scope.stopTimer = function() {
-        Timer.stopTimer();
+        self.timer.stopTimer();
       };
 
       $scope.resetTimer = function() {
-        Timer.stopTimer();
-        Timer.resetTimer(5);
+        self.timer.stopTimer();
+        self.timer.resetTimer(seconds);
       };
     
     }

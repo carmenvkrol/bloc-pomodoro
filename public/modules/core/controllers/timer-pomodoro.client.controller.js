@@ -2,24 +2,28 @@
 
 angular
   .module('core')
-  .controller('TimerPomodoroController', ['$scope', 'Timer',
+  .controller('TimerPomodoroController', ['$scope', 'timer',
 
-    function ($scope, Timer) {
+    function ($scope, timer) {
 
-      $scope.countdown = Timer.countdown;
-      Timer.resetTimer(5); //should be 25 minutes
+      this.timer = timer;
+      var self = this;
+
+      $scope.countdown = timer.countdown;
+      var seconds = 5; //should be 25 minutes or 1500 seconds
+      self.timer.resetTimer(seconds);
 
       $scope.startTimer = function() {
-        Timer.startTimer(5);
+        self.timer.startTimer(seconds);
       };
 
       $scope.stopTimer = function() {
-        Timer.stopTimer();
+        self.timer.stopTimer();
       };
 
       $scope.resetTimer = function() {
-        Timer.stopTimer();
-        Timer.resetTimer(5);
+        self.timer.stopTimer();
+        self.timer.resetTimer(seconds);
       };
     
     }
