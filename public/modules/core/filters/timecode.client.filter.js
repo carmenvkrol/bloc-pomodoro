@@ -3,14 +3,7 @@
 angular.module('core').filter('timecode', [
 	function() {
     return function(seconds) {
-     seconds = Number.parseFloat(seconds);
- 
-     // Returned when no time is provided.
-     if (Number.isNaN(seconds)) {
-       return '-:--';
-     }
- 
-     // make it a whole number
+
      var wholeSeconds = Math.floor(seconds);
  
      var minutes = Math.floor(wholeSeconds / 60);
@@ -19,7 +12,6 @@ angular.module('core').filter('timecode', [
  
      var output = minutes + ':';
  
-     // zero pad seconds, so 9 seconds should be :09
      if (remainingSeconds < 10) {
        output += '0';
      }
@@ -28,5 +20,5 @@ angular.module('core').filter('timecode', [
  
      return output;
    };
-	}
+    }
 ]);
