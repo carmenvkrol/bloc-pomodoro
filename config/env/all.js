@@ -26,8 +26,7 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/howler/howler.min.js',
-				'public/lib/angular-timer/app/js/timer.js'
+				'public/lib/howler/howler.min.js'
 			]
 		},
 		css: [

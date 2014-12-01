@@ -9,7 +9,6 @@ var ApplicationConfiguration = function () {
         'ngAnimate',
         'ngTouch',
         'ngSanitize',
-        'timer',
         'ui.router',
         'ui.bootstrap',
         'ui.utils'
@@ -26,7 +25,8 @@ var ApplicationConfiguration = function () {
       applicationModuleVendorDependencies: applicationModuleVendorDependencies,
       registerModule: registerModule
     };
-  }();'use strict';
+  }();
+'use strict';
 //Start by defining the main module and adding the module dependencies
 angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 // Setting HTML5 Location Mode
@@ -43,13 +43,17 @@ angular.element(document).ready(function () {
     window.location.hash = '#!';
   //Then init the app
   angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
-});'use strict';
+});
+'use strict';
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('core');'use strict';
+ApplicationConfiguration.registerModule('core');
+'use strict';
 // Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('tasks');'use strict';
+ApplicationConfiguration.registerModule('tasks');
+'use strict';
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('users');'use strict';
+ApplicationConfiguration.registerModule('users');
+'use strict';
 // Setting up route
 angular.module('core').config([
   '$stateProvider',
@@ -70,7 +74,8 @@ angular.module('core').config([
       templateUrl: 'modules/core/views/dashboard.pomodoro-timer.view.html'
     }).state('dashboard.shortBreakTimer', { templateUrl: 'modules/core/views/dashboard.shortbreak-timer.view.html' }).state('dashboard.longBreakTimer', { templateUrl: 'modules/core/views/dashboard.longbreak-timer.view.html' });
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').controller('HeaderController', [
   '$scope',
   'Authentication',
@@ -87,7 +92,8 @@ angular.module('core').controller('HeaderController', [
       $scope.isCollapsed = false;
     });
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').controller('HomeController', [
   '$scope',
   'Authentication',
@@ -95,7 +101,8 @@ angular.module('core').controller('HomeController', [
     // This provides Authentication context.
     $scope.authentication = Authentication;
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').controller('TimerButtonsController', [
   '$scope',
   function ($scope) {
@@ -106,7 +113,8 @@ angular.module('core').controller('TimerButtonsController', [
       shortBreakCounter: 0
     };
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').controller('TimerLongBreakController', [
   '$scope',
   'timer',
@@ -128,7 +136,8 @@ angular.module('core').controller('TimerLongBreakController', [
       self.timer.resetTimer(seconds);
     };
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').controller('TimerPomodoroController', [
   '$scope',
   'timer',
@@ -150,7 +159,8 @@ angular.module('core').controller('TimerPomodoroController', [
       self.timer.resetTimer(seconds);
     };
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').controller('TimerShortBreakController', [
   '$scope',
   'timer',
@@ -172,7 +182,8 @@ angular.module('core').controller('TimerShortBreakController', [
       self.timer.resetTimer(seconds);
     };
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('core').filter('timecode', [function () {
     return function (seconds) {
       var wholeSeconds = Math.floor(seconds);
@@ -185,7 +196,8 @@ angular.module('core').filter('timecode', [function () {
       output += remainingSeconds;
       return output;
     };
-  }]);'use strict';
+  }]);
+'use strict';
 angular.module('core').factory('ding', [function () {
     // Ding service logic
     // ...
@@ -204,7 +216,8 @@ angular.module('core').factory('ding', [function () {
         ding.play('brief');
       }
     };
-  }]);'use strict';
+  }]);
+'use strict';
 //Menu service used for managing  menus
 angular.module('core').service('Menus', [function () {
     // Define a set of default roles
@@ -341,7 +354,8 @@ angular.module('core').service('Menus', [function () {
     };
     //Adding the topbar menu
     this.addMenu('topbar');
-  }]);'use strict';
+  }]);
+'use strict';
 angular.module('core').factory('timer', [
   '$interval',
   'ding',
@@ -383,7 +397,8 @@ angular.module('core').factory('timer', [
       }
     };
   }
-]);/*'use strict';
+]);
+/*'use strict';
 
 // Configuring the Articles module
 angular.module('tasks').run(['Menus',
@@ -414,7 +429,8 @@ angular.module('tasks').config([
       templateUrl: 'modules/tasks/views/edit-task.client.view.html'
     });
   }
-]);'use strict';
+]);
+'use strict';
 // Tasks controller
 angular.module('tasks').controller('TasksController', [
   '$scope',
@@ -473,14 +489,16 @@ angular.module('tasks').controller('TasksController', [
       $scope.task = Tasks.get({ taskId: $stateParams.taskId });
     };
   }
-]);'use strict';
+]);
+'use strict';
 //Tasks service used to communicate Tasks REST endpoints
 angular.module('tasks').factory('Tasks', [
   '$resource',
   function ($resource) {
     return $resource('tasks/:taskId', { taskId: '@_id' }, { update: { method: 'PUT' } });
   }
-]);'use strict';
+]);
+'use strict';
 // Config HTTP Error Handling
 angular.module('users').config([
   '$httpProvider',
@@ -510,7 +528,8 @@ angular.module('users').config([
       }
     ]);
   }
-]);'use strict';
+]);
+'use strict';
 // Setting up route
 angular.module('users').config([
   '$stateProvider',
@@ -545,7 +564,8 @@ angular.module('users').config([
       templateUrl: 'modules/users/views/password/reset-password.client.view.html'
     });
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('users').controller('AuthenticationController', [
   '$scope',
   '$http',
@@ -577,7 +597,8 @@ angular.module('users').controller('AuthenticationController', [
       });
     };
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('users').controller('PasswordController', [
   '$scope',
   '$stateParams',
@@ -617,7 +638,8 @@ angular.module('users').controller('PasswordController', [
       });
     };
   }
-]);'use strict';
+]);
+'use strict';
 angular.module('users').controller('SettingsController', [
   '$scope',
   '$http',
@@ -678,13 +700,15 @@ angular.module('users').controller('SettingsController', [
       });
     };
   }
-]);'use strict';
+]);
+'use strict';
 // Authentication service for user variables
 angular.module('users').factory('Authentication', [function () {
     var _this = this;
     _this._data = { user: window.user };
     return _this._data;
-  }]);'use strict';
+  }]);
+'use strict';
 // Users service used for communicating with the users REST endpoint
 angular.module('users').factory('Users', [
   '$resource',
