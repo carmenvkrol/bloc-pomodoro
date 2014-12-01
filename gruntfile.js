@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 		serverViews: ['app/views/**/*.*'], 
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
-		clientJS: ['public/js/*.js', 'public/modules/**/*.js', '!public/modules/core/services/ding.client.service.js'],
+		clientJS: ['public/js/*.js', 'public/modules/**/*.js', 'public/modules/*/*[!tests]*/*.js'],
 		clientCSS: ['public/modules/**/*.css'],
 		mochaTests: ['app/tests/**/*.js']
 	};
@@ -80,14 +80,14 @@ module.exports = function(grunt) {
         files: ['public/modules/core/css/core.less',
         				'public/modules/users/css/users.less'],
         tasks: ['recess:dist']
-      }
-			/*clientCSS: {
+      },
+			clientCSS: {
 				files: watchFiles.clientCSS,
 				tasks: ['csslint'],
 				options: {
 					livereload: true
 				}
-			}*/
+			}
 		},
 		jshint: {
 			all: {
@@ -97,15 +97,15 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		/*csslint: {
+		csslint: {
 			options: {
 				csslintrc: '.csslintrc',
 			},
 			all: {
 				src: watchFiles.clientCSS
 			}
-		},*/
-		uglify: {
+		},
+		/*uglify: {
 			production: {
 				options: {
 					mangle: false
@@ -114,14 +114,14 @@ module.exports = function(grunt) {
 					'public/dist/application.min.js': 'public/dist/application.js'
 				}
 			}
-		},
-		/*cssmin: {
+		},*/
+		cssmin: {
 			combine: {
 				files: {
-					'public/dist/application.min.css': '<%= applicationCSSFiles %>'
+					'public/dist/application.min.css': watchFiles.clientCSS
 				}
 			}
-		},*/
+		},
 		nodemon: {
 			dev: {
 				script: 'server.js',
@@ -203,7 +203,7 @@ module.exports = function(grunt) {
 	//grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['less', 'loadConfig', 'ngmin', 'uglify', 'cssmin']);
+	grunt.registerTask('build', ['less', 'loadConfig', 'ngmin', 'cssmin']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit', 'less']);

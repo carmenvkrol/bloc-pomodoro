@@ -1,5 +1,7 @@
 'use strict';
 
+var MONGOHQ_URL='mongodb://'+process.env.MONGOHQ_UN+':'+process.env.MONGOHQ_PW+'@dogen.mongohq.com:10036/app32097213';
+
 module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/bloc-pomodoro',
 	assets: {

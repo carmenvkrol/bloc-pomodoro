@@ -46,6 +46,8 @@ angular.element(document).ready(function () {
 });'use strict';
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core');'use strict';
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('tasks');'use strict';
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('users');'use strict';
 // Setting up route
@@ -61,8 +63,12 @@ angular.module('core').config([
       templateUrl: 'modules/core/views/home.client.view.html'
     }).state('dashboard', {
       url: '/dashboard',
+      abstract: true,
       templateUrl: 'modules/core/views/dashboard.client.view.html'
-    }).state('dashboard.pomodoroTimer', { templateUrl: 'modules/core/views/dashboard.pomodoro-timer.view.html' }).state('dashboard.shortBreakTimer', { templateUrl: 'modules/core/views/dashboard.shortbreak-timer.view.html' }).state('dashboard.longBreakTimer', { templateUrl: 'modules/core/views/dashboard.longbreak-timer.view.html' });
+    }).state('dashboard.pomodoroTimer', {
+      url: '',
+      templateUrl: 'modules/core/views/dashboard.pomodoro-timer.view.html'
+    }).state('dashboard.shortBreakTimer', { templateUrl: 'modules/core/views/dashboard.shortbreak-timer.view.html' }).state('dashboard.longBreakTimer', { templateUrl: 'modules/core/views/dashboard.longbreak-timer.view.html' });
   }
 ]);'use strict';
 angular.module('core').controller('HeaderController', [
@@ -90,92 +96,112 @@ angular.module('core').controller('HomeController', [
     $scope.authentication = Authentication;
   }
 ]);'use strict';
+angular.module('core').controller('TimerButtonsController', [
+  '$scope',
+  function ($scope) {
+    // Timer buttons controller logic
+    // ...
+    $scope.counters = {
+      pomodoroCounter: 0,
+      shortBreakCounter: 0
+    };
+  }
+]);'use strict';
 angular.module('core').controller('TimerLongBreakController', [
   '$scope',
-  '$state',
-  'Timer',
-  function ($scope, $state, Timer) {
-    $scope.timerRunning = false;
-    $scope.countdown = 5;
-    // 15 minutes = 112500
-    Timer.init($scope);
+  'timer',
+  function ($scope, timer) {
+    this.timer = timer;
+    var self = this;
+    $scope.countdown = timer.countdown;
+    var seconds = 900;
+    //should be 15 minutes
+    self.timer.resetTimer(seconds);
     $scope.startTimer = function () {
-      Timer.startTimer();
+      self.timer.startTimer(seconds);
     };
     $scope.stopTimer = function () {
-      Timer.stopTimer();
+      self.timer.stopTimer();
     };
     $scope.resetTimer = function () {
-      $scope.startTimer();
-      Timer.resetTimer(112500);
+      self.timer.stopTimer();
+      self.timer.resetTimer(seconds);
     };
   }
 ]);'use strict';
 angular.module('core').controller('TimerPomodoroController', [
   '$scope',
-  '$state',
-  '$stateParams',
-  'Timer',
-  'Ding',
-  function ($scope, $state, $stateParams, Timer, Ding) {
-    $scope.timerRunning = false;
-    $scope.countdown = 5;
-    // 25 minutes = 937500
-    Timer.init($scope);
+  'timer',
+  function ($scope, timer) {
+    this.timer = timer;
+    var self = this;
+    $scope.countdown = timer.countdown;
+    var seconds = 5;
+    //should be 25 minutes or 1500 seconds
+    self.timer.resetTimer(seconds);
     $scope.startTimer = function () {
-      Timer.startTimer();
+      self.timer.startTimer(seconds);
     };
     $scope.stopTimer = function () {
-      Timer.stopTimer();
+      self.timer.stopTimer();
     };
     $scope.resetTimer = function () {
-      $scope.startTimer();
-      Timer.resetTimer(937500);
+      self.timer.stopTimer();
+      self.timer.resetTimer(seconds);
     };
-    $scope.$on('timer-stopped', function (event, data) {
-      console.log(data);
-      if (data.seconds === 0 && data.minutes === 0) {
-        Ding.ding();
-        $state.go('dashboard.shortBreakTimer');
-      }
-    });
   }
 ]);'use strict';
 angular.module('core').controller('TimerShortBreakController', [
   '$scope',
-  '$state',
-  '$stateParams',
-  'Timer',
-  function ($scope, $state, $stateParams, Timer) {
-    $scope.timerRunning = false;
-    $scope.countdown = 5;
-    // 5 minutes = 7500
-    Timer.init($scope);
+  'timer',
+  function ($scope, timer) {
+    this.timer = timer;
+    var self = this;
+    $scope.countdown = timer.countdown;
+    var seconds = 5;
+    //should be 5 minutes or 300 seconds
+    self.timer.resetTimer(seconds);
     $scope.startTimer = function () {
-      Timer.startTimer();
+      self.timer.startTimer(seconds);
     };
     $scope.stopTimer = function () {
-      Timer.stopTimer();
+      self.timer.stopTimer();
     };
     $scope.resetTimer = function () {
-      $scope.startTimer();
-      Timer.resetTimer(7500);
+      self.timer.stopTimer();
+      self.timer.resetTimer(seconds);
     };
-    $scope.$on('timer-stopped', function (event, data) {
-      console.log(data);
-      if (data.seconds === 0 && data.minutes === 0) {
-        $state.go('dashboard.pomodoroTimer');
-      }
-    });
   }
 ]);'use strict';
-angular.module('core').factory('Ding', [function () {
+angular.module('core').filter('timecode', [function () {
+    return function (seconds) {
+      var wholeSeconds = Math.floor(seconds);
+      var minutes = Math.floor(wholeSeconds / 60);
+      var remainingSeconds = wholeSeconds % 60;
+      var output = minutes + ':';
+      if (remainingSeconds < 10) {
+        output += '0';
+      }
+      output += remainingSeconds;
+      return output;
+    };
+  }]);'use strict';
+angular.module('core').factory('ding', [function () {
     // Ding service logic
     // ...
     // Public API
     return {
       ding: function () {
-        var ding = new Howl({ urls: ['music/alarm-clock.mp3'] }).play();
+        var ding = new Howl({
+            urls: ['modules/core/music/alarm-clock.mp3'],
+            sprite: {
+              brief: [
+                0,
+                2800
+              ]
+            }
+          });
+        ding.play('brief');
       }
     };
   }]);'use strict';
@@ -316,28 +342,145 @@ angular.module('core').service('Menus', [function () {
     //Adding the topbar menu
     this.addMenu('topbar');
   }]);'use strict';
-angular.module('core').factory('Timer', [function () {
+angular.module('core').factory('timer', [
+  '$interval',
+  'ding',
+  function ($interval, ding) {
     // Timer service logic
     // ...
     // Public API
+    var countdown;
+    var stop;
     return {
-      init: function (scope) {
-        this.scope = scope;
+      countdown: function () {
+        return countdown;
       },
-      startTimer: function () {
-        this.scope.$broadcast('timer-start');
-        this.scope.timerRunning = true;
+      stop: function () {
+        return stop;
+      },
+      startTimer: function (time) {
+        var self = this;
+        if (angular.isDefined(stop))
+          return;
+        stop = $interval(function () {
+          countdown = time;
+          if (time === 0) {
+            ding.ding();
+            self.stopTimer();
+          } else if (time > 0) {
+            time--;
+          }
+        }, 1000);
       },
       stopTimer: function () {
-        this.scope.$broadcast('timer-stop');
-        this.scope.timerRunning = false;
+        if (angular.isDefined(stop)) {
+          $interval.cancel(stop);
+          stop = undefined;
+        }
       },
-      resetTimer: function (num) {
-        this.scope.countdown = num;
-        this.scope.$broadcast('timer-set-countdown', this.scope.countdown);
+      resetTimer: function (time) {
+        countdown = time;
       }
     };
-  }]);'use strict';
+  }
+]);/*'use strict';
+
+// Configuring the Articles module
+angular.module('tasks').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('tasks', 'Tasks', 'tasks', 'dropdown', '/tasks(/create)?');
+		Menus.addSubMenuItem('tasks', 'tasks', 'List Tasks', 'tasks');
+		Menus.addSubMenuItem('tasks', 'tasks', 'New Task', 'tasks/create');
+	}
+]);*/
+'use strict';
+//Setting up route
+angular.module('tasks').config([
+  '$stateProvider',
+  function ($stateProvider) {
+    // Tasks state routing
+    $stateProvider.state('listTasks', {
+      url: '/tasks',
+      templateUrl: 'modules/tasks/views/list-tasks.client.view.html'
+    }).state('createTask', {
+      url: '/tasks/create',
+      templateUrl: 'modules/tasks/views/create-task.client.view.html'
+    }).state('viewTask', {
+      url: '/tasks/:taskId',
+      templateUrl: 'modules/tasks/views/view-task.client.view.html'
+    }).state('editTask', {
+      url: '/tasks/:taskId/edit',
+      templateUrl: 'modules/tasks/views/edit-task.client.view.html'
+    });
+  }
+]);'use strict';
+// Tasks controller
+angular.module('tasks').controller('TasksController', [
+  '$scope',
+  '$stateParams',
+  '$location',
+  'Authentication',
+  'Tasks',
+  function ($scope, $stateParams, $location, Authentication, Tasks) {
+    $scope.authentication = Authentication;
+    // Create new Task
+    $scope.create = function () {
+      // Create new Task object
+      var task = new Tasks({ name: this.name });
+      // Redirect after save
+      task.$save(function (response) {
+        $location.path('dashboard');
+        // Clear form fields
+        $scope.name = '';
+        // Reload the list of tasks
+        $scope.find();
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+    // Remove existing Task
+    $scope.remove = function (task) {
+      if (task) {
+        task.$remove();
+        for (var i in $scope.tasks) {
+          if ($scope.tasks[i] === task) {
+            $scope.tasks.splice(i, 1);
+          }
+        }
+        $scope.find();
+      } else {
+        $scope.task.$remove(function () {
+          $location.path('tasks');
+        });
+      }
+    };
+    // Update existing Task
+    $scope.update = function () {
+      var task = $scope.task;
+      task.$update(function () {
+        $location.path('tasks/' + task._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
+    };
+    // Find a list of Tasks
+    $scope.find = function () {
+      $scope.tasks = Tasks.query();
+    };
+    // Find existing Task
+    $scope.findOne = function () {
+      $scope.task = Tasks.get({ taskId: $stateParams.taskId });
+    };
+  }
+]);'use strict';
+//Tasks service used to communicate Tasks REST endpoints
+angular.module('tasks').factory('Tasks', [
+  '$resource',
+  function ($resource) {
+    return $resource('tasks/:taskId', { taskId: '@_id' }, { update: { method: 'PUT' } });
+  }
+]);'use strict';
 // Config HTTP Error Handling
 angular.module('users').config([
   '$httpProvider',
@@ -412,7 +555,7 @@ angular.module('users').controller('AuthenticationController', [
     $scope.authentication = Authentication;
     // If user is signed in then redirect back home
     if ($scope.authentication.user)
-      $location.path('/');
+      $location.path('/dashboard');
     $scope.signup = function () {
       $http.post('/auth/signup', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
@@ -427,7 +570,7 @@ angular.module('users').controller('AuthenticationController', [
       $http.post('/auth/signin', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
-        // And redirect to the index page
+        // And redirect to the dashboard
         $location.path('/dashboard');
       }).error(function (response) {
         $scope.error = response.message;
