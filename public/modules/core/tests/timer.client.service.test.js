@@ -4,14 +4,16 @@
   describe('timerservice', function() {
     //Initialize global variables
     var timer;
-    var interval;
+    var $interval;
+    var ding;
 
     // Load the main application module
     beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
-    beforeEach(inject(function(_timer_, $interval) {
+    beforeEach(inject(function(_timer_, _$interval_, _ding_) {
       timer = _timer_;
-      interval = $interval;
+      $interval = _$interval_;
+      ding = _ding_;
     }));
 
     it('should have countdown function', function() {
@@ -36,14 +38,27 @@
         expect(angular.isFunction(timer.startTimer)).toBe(true);
     });
 
+    it('startTimer should stop Timer and ding when countdown reaches zero', function(){
+        spyOn(timer, 'stopTimer');
+        spyOn(ding, 'ding');
+        timer.startTimer(0);
+        expect(timer.stopTimer).toHaveBeenCalled();
+        expect(ding.ding).toHaveBeenCalled();
+    });
+
+    it('startTimer should decrease by 1 second each interval', function() {
+        timer.startTimer(4);
+        $interval.flush(1);
+    });
+
     it('should have stopTimer function', function() {
         expect(angular.isFunction(timer.stopTimer)).toBe(true);
     });
 
     it('stopTimer function should cancel timer and set stop to undefined', function(){
-        spyOn(interval, 'cancel');
+        spyOn($interval, 'cancel');
         angular.isDefined(stop);
-        expect(interval.cancel(stop)).toHaveBeenCalled();
+        expect($interval.cancel).toHaveBeenCalledWith('stop');
         expect(timer.stop()).toEqual(undefined);
     });
 
