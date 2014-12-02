@@ -10,7 +10,7 @@ angular
       var self = this;
 
       $scope.countdown = timer.countdown;
-      var seconds = 5; //should be 25 minutes or 1500 seconds
+      var seconds = 1500; //should be 25 minutes or 1500 seconds
       self.timer.resetTimer(seconds);
 
       $scope.startTimer = function() {
