@@ -7,10 +7,19 @@ Users can create an account in which they use the [Pomodoro Technique] (http://p
 
 There is also task functionality, in which users can create and delete tasks for the pomodoro sessions.
 
+Here's the [demo] (https://bloc-pomodoro-cvk.herokuapp.com/#!/).
+
 
 Installation
 ------------
 Run `npm install` and then `bower install`.
+
+
+Screenshots
+------------
+![](https://github.com/carmenvkrol/bloc-pomodoro/blob/master/bloc-pomodoro-screenshot-homepage.png)
+
+![](https://github.com/carmenvkrol/bloc-pomodoro/blob/master/bloc-pomodoro-screenshot-dashboardpage.png)
 
 
 Notes
