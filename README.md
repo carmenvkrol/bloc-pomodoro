@@ -94,7 +94,7 @@ var watchFiles = {
 
 LESS
 ------------
-This app uses the CSS pre-processor [LESS](http://lesscss.org/) in order to facilitate styling with [Bootstrap](http://getbootstrap.com/css/), which is included.  LESS files can be found in the CSS folders under the core and users directories - all of which are located in the public directory. (See Directory Structure section above to locate these).  In order for these files to be converted into CSS, and modify styling in the views, save LESS files within these CSS folders.
+This app uses the CSS pre-processor [LESS](http://lesscss.org/) in order to facilitate styling with [Bootstrap](http://getbootstrap.com/css/), which is included.  LESS files can be found in the CSS folders under the core and users directories - both of which are located in the public directory. (See Directory Structure section above to locate these).  In order for these files to be converted into CSS, and modify styling in the views, save LESS files within these CSS folders.
 
 
 
@@ -111,7 +111,7 @@ The client-side functionality for the timers, which are used in the [/dashboard]
 
 Task Feature
 ------------
-The client-side functionality for tasks, which are used in the [/dashboard](https://github.com/carmenvkrol/bloc-pomodoro/blob/master/public/modules/core/views/dashboard.client.view.html) view for [the pomodoro timer](https://github.com/carmenvkrol/bloc-pomodoro/blob/master/public/modules/core/views/dashboard.pomodoro-timer.view.html), can be found in the tasks directory within the public directory. The server-side functionality is found in the tasks files within the app folder. (See Directory Structure section above to locate these).
+The client-side functionality for tasks, which are used in the [/dashboard](https://github.com/carmenvkrol/bloc-pomodoro/blob/master/public/modules/core/views/dashboard.client.view.html) view for the [pomodoro timer](https://github.com/carmenvkrol/bloc-pomodoro/blob/master/public/modules/core/views/dashboard.pomodoro-timer.view.html), can be found in the tasks directory within the public directory. The server-side functionality is found in the tasks files within the app folder. (See Directory Structure section above to locate these).
 
 
 Grunt Plugins
