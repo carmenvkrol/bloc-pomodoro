@@ -1,6 +1,6 @@
 'use strict';
 
-var MONGOHQ_URL='mongodb://'+process.env.MONGOHQ_UN+':'+process.env.MONGOHQ_PW+'@dogen.mongohq.com:10036/app32097213';
+var MONGOHQ_URL='mongodb://'+process.env.MONGOHQ_UN+':'+process.env.MONGOHQ_PW+'@candidate.21.mongolayer.com:11483,candidate.51.mongolayer.com:11140/app32097213';
 
 module.exports = {
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/bloc-pomodoro',
@@ -12,11 +12,11 @@ module.exports = {
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
-				'public/lib/angular-resource/angular-resource.js', 
-				'public/lib/angular-cookies/angular-cookies.js', 
-				'public/lib/angular-animate/angular-animate.js', 
-				'public/lib/angular-touch/angular-touch.js', 
-				'public/lib/angular-sanitize/angular-sanitize.js', 
+				'public/lib/angular-resource/angular-resource.js',
+				'public/lib/angular-cookies/angular-cookies.js',
+				'public/lib/angular-animate/angular-animate.js',
+				'public/lib/angular-touch/angular-touch.js',
+				'public/lib/angular-sanitize/angular-sanitize.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
