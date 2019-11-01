@@ -1,13 +1,11 @@
 bloc pomodoro app
 =============
 
-Single-page app built with [AngularJS](https://angularjs.org/), [Express](http://expressjs.com/), [Mongoose](http://mongoosejs.com/), and [Node.js](http://nodejs.org/) using the [MeanJS Yeoman scaffolding](http://meanjs.org/). 
+Single-page app built with [AngularJS](https://angularjs.org/), [Express](http://expressjs.com/), [Mongoose](http://mongoosejs.com/), and [Node.js](http://nodejs.org/) using the [MeanJS Yeoman scaffolding](http://meanjs.org/).
 
-Users can create an account in which they use the [Pomodoro Technique] (http://pomodorotechnique.com/).  There are 3 timers: Pomodoro, Short Break, and Long Break. 
+Users can create an account in which they use the [Pomodoro Technique] (http://pomodorotechnique.com/).  There are 3 timers: Pomodoro, Short Break, and Long Break.
 
 There is also task functionality, in which users can create and delete tasks for the pomodoro sessions.
-
-Here's the [demo] (https://bloc-pomodoro-cvk.herokuapp.com/#!/).
 
 
 Configuration
@@ -73,7 +71,7 @@ bloc2/
  |  |__modules/ #development mode files
  |  |  |__core/ #home (landing) and dashboard, including all timers
  |  |  |__tasks/ #tasks for pomodoro timer
- |  |  |__users/ #sign in and sign up 
+ |  |  |__users/ #sign in and sign up
  Gruntfile.js
 
 ```
@@ -82,7 +80,7 @@ Grunt looks for files using a defined pattern so that it knows what to compile a
 
 ```
 var watchFiles = {
-    serverViews: ['app/views/**/*.*'], 
+    serverViews: ['app/views/**/*.*'],
     serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
     clientViews: ['public/modules/**/views/**/*.html'],
     clientJS: ['public/*.js', 'public/modules/*/*.js', 'public/modules/*/*[!tests]*/*.js'],
@@ -138,7 +136,7 @@ A list of the plugins used by Grunt and what they're used for:
 
 **[Grunt-Karma](https://github.com/karma-runner/grunt-karma)** - for running Karma, a test runner for JavaScript.
 
-**[Grunt-Mocha-Test](https://github.com/pghalliday/grunt-mocha-test)** - runs server-side mocha tests 
+**[Grunt-Mocha-Test](https://github.com/pghalliday/grunt-mocha-test)** - runs server-side mocha tests
 
 **[Grunt-Ngmin](https://github.com/btford/grunt-ngmin)** - pre-minifies Angular code
 
